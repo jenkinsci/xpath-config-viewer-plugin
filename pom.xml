@@ -30,14 +30,16 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>1.446</version>
+        <version>1.447</version>
     </parent>
 
     <artifactId>xpath-config-viewer</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.2</version>
     <name>XPath Configuration Viewer plugin</name>
     <description>Allows to view common configuration across all jobs selected by xpath expression</description>
     <packaging>hpi</packaging>
+
+    <url>https://wiki.jenkins-ci.org/display/JENKINS/XPath+Configuration+Viewer</url>
 
     <developers>
         <developer>
@@ -48,9 +50,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:ssh://github.com/ffromm/xpath-config-viewer.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/ffromm/xpath-config-viewer.git</developerConnection>
-        <url>https://github.com/ffromm/xpath-config-viewer</url>
+        <connection>scm:git:ssh://github.com/jenkinsci/xpath-config-viewer-plugin.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/jenkinsci/xpath-config-viewer-plugin.git</developerConnection>
+        <url>https://github.com/jenkinsci/xpath-config-viewer-plugin.git</url>
     </scm>
 
 	<!-- get every artifact through maven.glassfish.org, which proxies all the
