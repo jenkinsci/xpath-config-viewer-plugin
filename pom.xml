@@ -50,8 +50,8 @@
     </developers>
 
     <scm>
-        <connection>scm:git:ssh://github.com:jenkinsci/xpath-config-viewer-plugin.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com:jenkinsci/xpath-config-viewer-plugin.git</developerConnection>
+        <connection>scm:git:https://ffromm@github.com/jenkinsci/xpath-config-viewer-plugin.git</connection>
+        <developerConnection>scm:git:https://ffromm@github.com/jenkinsci/xpath-config-viewer-plugin.git</developerConnection>
         <url>https://github.com/jenkinsci/xpath-config-viewer-plugin.git</url>
     </scm>
 
