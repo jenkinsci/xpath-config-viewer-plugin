@@ -34,7 +34,7 @@
     </parent>
 
     <artifactId>xpath-config-viewer</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3-SNAPSHOT</version>
     <name>XPath Configuration Viewer plugin</name>
     <description>Allows to view common configuration across all jobs selected by xpath expression</description>
     <packaging>hpi</packaging>
@@ -84,7 +84,7 @@
     <distributionManagement>
         <repository>
             <id>maven.jenkins-ci.org</id>
-            <url>http://maven.jenkins-ci.org:8081/content/repositories/releases/</url>
+            <url>http://maven.jenkins-ci.org/content/repositories/releases/</url>
         </repository>
     </distributionManagement>
 
