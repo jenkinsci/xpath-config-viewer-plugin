@@ -34,7 +34,7 @@
     </parent>
 
     <artifactId>xpath-config-viewer</artifactId>
-    <version>1.0.7-SNAPSHOT</version>
+    <version>1.0.7</version>
     <name>XPath Configuration Viewer plugin</name>
     <description>Allows to view common configuration across all jobs selected by xpath expression</description>
     <packaging>hpi</packaging>
