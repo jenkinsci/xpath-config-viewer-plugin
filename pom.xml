@@ -30,7 +30,7 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>1.447</version>
+        <version>1.424</version>
     </parent>
 
     <artifactId>xpath-config-viewer</artifactId>
@@ -134,12 +134,6 @@
             <artifactId>junit</artifactId>
             <version>4.8.1</version>
             <type>jar</type>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>r07</version>
             <scope>test</scope>
         </dependency>
         <dependency>
