@@ -23,7 +23,7 @@
  */
 package org.jenkinsci.plugins.viewer;
 
-import java.util.Collection;
+import java.util.*;
 
 import hudson.Extension;
 
@@ -79,7 +79,13 @@ public class XPathConfigProvider extends AbstractConfigProvider {
     @Override
     public Collection< Config > getAllConfigs() {
         ProjectCollector.init();
-        return super.getAllConfigs();
+
+        Collection<Config> allConfigs = super.getAllConfigs();
+
+        ArrayList<Config> configsList = new ArrayList<Config>();
+        configsList.addAll(allConfigs);
+        Collections.sort(configsList, new XPathConfigComparator());
+        return configsList;
     }
 
 }

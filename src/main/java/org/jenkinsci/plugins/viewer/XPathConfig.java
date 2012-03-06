@@ -24,14 +24,6 @@
 package org.jenkinsci.plugins.viewer;
 
 import hudson.model.AbstractProject;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import org.apache.commons.lang.StringUtils;
 import org.dom4j.Document;
 import org.dom4j.Element;
@@ -39,6 +31,13 @@ import org.dom4j.io.SAXReader;
 import org.jenkinsci.lib.configprovider.model.Config;
 import org.jfree.util.Log;
 import org.kohsuke.stapler.DataBoundConstructor;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Represents a config viewer item.
@@ -192,5 +191,13 @@ public class XPathConfig extends Config {
         }
 
         return null;
+    }
+
+    /**
+     * Returns the config id
+     * @return the config id
+     */
+    public String getId() {
+        return this.id;
     }
 }
