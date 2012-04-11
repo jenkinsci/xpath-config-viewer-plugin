@@ -35,6 +35,14 @@ import java.util.List;
  *
  */
 public class ProjectCollector {
+
+    /**
+     * hide Utility class constructor
+     */
+    private ProjectCollector() {
+
+    }
+
     /**
      * list of all projects.
      */

@@ -24,24 +24,19 @@
 package org.jenkinsci.plugins.viewer;
 
 import hudson.Extension;
-import hudson.model.ManagementLink;
 import hudson.model.Hudson;
-
-import java.io.IOException;
-import java.util.List;
-
-import javax.servlet.ServletException;
-
+import hudson.model.ManagementLink;
 import net.sf.json.JSONObject;
-
 import org.acegisecurity.AccessDeniedException;
 import org.jenkinsci.lib.configprovider.ConfigProvider;
 import org.jenkinsci.lib.configprovider.model.Config;
-import org.kohsuke.stapler.HttpRedirect;
-import org.kohsuke.stapler.HttpResponse;
-import org.kohsuke.stapler.QueryParameter;
-import org.kohsuke.stapler.StaplerRequest;
-import org.kohsuke.stapler.StaplerResponse;
+import org.kohsuke.stapler.*;
+
+import javax.servlet.ServletException;
+import java.io.IOException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Main class for the config viewer plugin.
@@ -53,6 +48,10 @@ import org.kohsuke.stapler.StaplerResponse;
 @Extension
 public class XPathConfigViewerPlugin extends ManagementLink {
 
+    /**
+     * the logger
+     */
+    private static final Logger LOG = Logger.getLogger(XPathConfigViewerPlugin.class.getName());
     /**
      * the xpath config provider.
      */
@@ -184,8 +183,9 @@ public class XPathConfigViewerPlugin extends ManagementLink {
             this.xPathConfigProvider.save(config);
 
         } catch (ServletException e) {
-            e.printStackTrace();
+            LOG.log(Level.SEVERE, "Exception saving xpath config viewer: " + e.getMessage());
         }
+
         return new HttpRedirect("index");
     }
     
