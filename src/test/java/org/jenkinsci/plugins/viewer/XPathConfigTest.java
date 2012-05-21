@@ -23,13 +23,9 @@
  */
 package org.jenkinsci.plugins.viewer;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.fail;
-
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -37,6 +33,8 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 /**
  * @author c031
@@ -69,14 +67,15 @@ public class XPathConfigTest {
         
         config.setXpath("//configuredTriggers");
 
-        Element xmlBlock = config.getXmlBlock(this.jobAconfig);
-        assertNotNull("xml block should not be null.", xmlBlock);
+        List<Element> xmlBlocks = config.getXmlBlock(this.jobAconfig);
+        assertNotNull("xml block should not be null.", xmlBlocks);
+        assertTrue(xmlBlocks.size() > 0);
 
         try {
             Document snippet = new SAXReader().read(this.jobAsnippet);
             String expectedXml = snippet.asXML();
             expectedXml = expectedXml.substring(expectedXml.indexOf("<con"));
-            assertEquals(expectedXml, xmlBlock.asXML());
+            assertEquals(expectedXml, xmlBlocks.get(0).asXML());
         } catch (DocumentException e) {
             fail("unexpected Exception: " + e.getMessage());
         }

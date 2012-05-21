@@ -60,22 +60,27 @@ public class XPathConfigMockTest {
         project1 = PowerMockito.mock(AbstractProject.class);
         PowerMockito.when(project1.getConfigFile()).thenReturn(new XmlFile(new File("src/test/resources/xml/1.xml")));
         PowerMockito.when(project1.getName()).thenReturn("job1");
+        PowerMockito.when(project1.toString()).thenReturn("AbstractProject job1");
         
         project2 = PowerMockito.mock(AbstractProject.class);
         PowerMockito.when(project2.getConfigFile()).thenReturn(new XmlFile(new File("src/test/resources/xml/2.xml")));
         PowerMockito.when(project2.getName()).thenReturn("job2");
+        PowerMockito.when(project2.toString()).thenReturn("AbstractProject job2");
         
         project3 = PowerMockito.mock(AbstractProject.class);
         PowerMockito.when(project3.getConfigFile()).thenReturn(new XmlFile(new File("src/test/resources/xml/3.xml")));
         PowerMockito.when(project3.getName()).thenReturn("job3");
+        PowerMockito.when(project3.toString()).thenReturn("AbstractProject job3");
         
         project4 = PowerMockito.mock(AbstractProject.class);
         PowerMockito.when(project4.getConfigFile()).thenReturn(new XmlFile(new File("src/test/resources/xml/4.xml")));
         PowerMockito.when(project4.getName()).thenReturn("job4");
+        PowerMockito.when(project4.toString()).thenReturn("AbstractProject job4");
         
         project5 = PowerMockito.mock(AbstractProject.class);
         PowerMockito.when(project5.getConfigFile()).thenReturn(new XmlFile(new File("src/test/resources/xml/5.xml")));
         PowerMockito.when(project5.getName()).thenReturn("job5");
+        PowerMockito.when(project5.toString()).thenReturn("AbstractProject job5");
     }
     
     @Test
@@ -109,15 +114,15 @@ public class XPathConfigMockTest {
         
         assertNotNull(distinctXmlBlocks);
         
-        assertEquals(4, distinctXmlBlocks.size());
+        assertEquals(7, distinctXmlBlocks.size());
         
         int i = 0;
-        Integer [] expectedSizes = new Integer [] {2, 1, 1, 1};
+        Integer [] expectedSizes = new Integer [] {2, 2, 1, 1, 1, 1, 1};
         for(XmlBlock xmlBlock : distinctXmlBlocks) {
             assertEquals(expectedSizes[i].intValue(), xmlBlock.getProjects().size());
             i++;
         }
-        String notAssignedBlock = distinctXmlBlocks.get(3).getXmlblock();
+        String notAssignedBlock = distinctXmlBlocks.get(6).getXmlblock();
         
         assertEquals(XPathConfig.NOT_ASSIGNED, notAssignedBlock);
         

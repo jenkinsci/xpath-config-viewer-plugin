@@ -129,30 +129,30 @@ public class XPathConfig extends Config {
                 }
             }
             
-            Element xmlBlockElement = this.getXmlBlock(project.getConfigFile().getFile());
+            List<Element> xmlBlockElements = this.getXmlBlock(project.getConfigFile().getFile());
             
-            if(xmlBlockElement != null) {
+            if(xmlBlockElements != null && xmlBlockElements.size() > 0) {
                 if(notAssignedList.contains(project)) {
                     notAssignedList.remove(project);
                 }
-                
-                String xmlBlockStr = xmlBlockElement.asXML();
-                
-                XmlBlock testBlock = new XmlBlock();
-                testBlock.setXmlblock(xmlBlockStr);
-                
-                if (xmlBlocks.contains(testBlock)) {
-                    XmlBlock xmlBlock = xmlBlocks.get(xmlBlocks.indexOf(testBlock));
-                    xmlBlock.getProjects().add(project);
-                } else {
-                    XmlBlock xmlBlock = new XmlBlock();
-                    xmlBlock.setXmlblock(xmlBlockStr);
-                    List< AbstractProject > projects = new ArrayList< AbstractProject >();
-                    projects.add(project);
-                    xmlBlock.setProjects(projects);
-                    xmlBlocks.add(xmlBlock);
-                    
-                    
+
+                for(Element xmlBlockElement : xmlBlockElements) {
+                    String xmlBlockStr = xmlBlockElement.asXML();
+
+                    XmlBlock testBlock = new XmlBlock();
+                    testBlock.setXmlblock(xmlBlockStr);
+
+                    if (xmlBlocks.contains(testBlock)) {
+                        XmlBlock xmlBlock = xmlBlocks.get(xmlBlocks.indexOf(testBlock));
+                        xmlBlock.getProjects().add(project);
+                    } else {
+                        XmlBlock xmlBlock = new XmlBlock();
+                        xmlBlock.setXmlblock(xmlBlockStr);
+                        List< AbstractProject > projects = new ArrayList< AbstractProject >();
+                        projects.add(project);
+                        xmlBlock.setProjects(projects);
+                        xmlBlocks.add(xmlBlock);
+                    }
                 }
             }              
         }
@@ -173,7 +173,7 @@ public class XPathConfig extends Config {
      * @return the xml block
      */
     @SuppressWarnings("rawtypes")
-    public Element getXmlBlock(File xmlFile) {
+    public List<Element> getXmlBlock(File xmlFile) {
         if (StringUtils.isEmpty(this.getXpath())) {
             return null;
         }
@@ -184,7 +184,9 @@ public class XPathConfig extends Config {
             List nodes = dom.selectNodes(this.xpath);
 
             if (nodes.size() > 0) {
-                return (Element) nodes.get(0);
+                List<Element> elements = new ArrayList<Element>(nodes.size());
+                elements.addAll(nodes);
+                return elements;
             }
         } catch (Exception e) {
             Log.error("Exception getting xml block from config.xml: ", e);
